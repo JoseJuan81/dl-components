@@ -1,0 +1,3 @@
+[submodule "my-components/UserProfileLayout"]
+	path = my-components/UserProfileLayout
+	url = https://github.com/JoseJuan81/UserProfileLayout

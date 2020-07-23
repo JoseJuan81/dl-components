@@ -1,0 +1,39 @@
+.profile {
+  @apply h-screen;
+  @apply mt-10;
+
+  .menu-web {
+    @apply w-full;
+    @apply rounded;
+    @apply text-gray-600;
+
+    li {
+      @apply my-2;
+      @apply text-left whitespace-no-wrap;
+      @apply duration-200;
+
+      &:hover {
+        @apply text-indigo-700;
+      }
+
+      .router-link-exact-active {
+        @apply duration-500;
+        @apply text-indigo-700;
+        @apply py-1 px-2;
+        @apply w-full h-full;
+        @apply bg-indigo-100;
+        @apply rounded-md;
+      }
+    }
+  }
+
+  .dl-container-layout {
+    .dl-aside-container {
+      @apply font-bold text-indigo-700;
+      @apply sticky top-0;
+      @apply flex items-center justify-start;
+
+      flex-basis: 22%;
+    }
+  }
+}
