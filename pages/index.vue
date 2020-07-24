@@ -7,6 +7,13 @@
       </h1>
       <div class="links">
         <a
+          href="/menu-anidado"
+          rel="noopener noreferrer"
+          class="button--green"
+        >
+          Componentes
+        </a>
+        <a
           href="https://nuxtjs.org/"
           target="_blank"
           rel="noopener noreferrer"

@@ -1,42 +1,49 @@
 <template>
-  <UserProfileLayout
-    class="profile container mx-auto px-4 pt-4"
-    :show="show"
-    :break-point="768"
-  >
-    <template v-slot:aside>
-      <ul class="menu-web">
-        <li v-for="c in components" :key="c.name">
-          <router-link
-            :to="{ name: c.route }"
-          >{{c.name}}</router-link>
-        </li>
-      </ul>
-    </template>
-    <template v-slot:main-content>
-        <div class="h-screen lg:pl-4">
-          <transition name="rotating" mode="out-in">
-            <Nuxt />
-          </transition>
-        </div>
-    </template>
-    <template v-slot:menu-movil>
-      <div class="wrapper-menu-movil" data-cy="menu-movil">
-        <button
-          class="go-back"
-          type="button"
-          @click="show = false"
-        >regresar</button>
+  <div class="mt-10">
+    <button
+      class="activator"
+      type="button"
+      @click="show = true"
+    >Menú</button>
+    <UserProfileLayout
+      class="profile container mx-auto px-4 pt-4"
+      :show="show"
+      :break-point="768"
+    >
+      <template v-slot:aside>
         <ul class="menu-web">
-          <li v-for="c in components" :key="c.name">
+          <li v-for="c in components" :key="c.name" :class="{ 'active': c.route === $route.path}">
             <router-link
-              :to="{ name: c.route }"
+              :to="c.route"
             >{{c.name}}</router-link>
           </li>
         </ul>
-      </div>
-    </template>
-  </UserProfileLayout>
+      </template>
+      <template v-slot:main-content>
+          <div class="h-screen lg:pl-4">
+            <transition name="rotating" mode="out-in">
+              <Nuxt />
+            </transition>
+          </div>
+      </template>
+      <template v-slot:menu-movil>
+        <div class="wrapper-menu-movil" data-cy="menu-movil">
+          <button
+            class="go-back"
+            type="button"
+            @click="show = false"
+          >regresar</button>
+          <ul class="menu-web">
+            <li v-for="c in components" :key="c.name" :class="{ 'active': c.route === $route.path}">
+              <router-link
+                :to="c.route"
+              >{{c.name}}</router-link>
+            </li>
+          </ul>
+        </div>
+      </template>
+    </UserProfileLayout>
+  </div>
 </template>
 <script>
 import UserProfileLayout from '~/my-components/UserProfileLayout'
@@ -44,13 +51,13 @@ import UserProfileLayout from '~/my-components/UserProfileLayout'
 function data () {
   return {
     components: [
-      { name: 'dl-tree-nodes', route: 'tree-nodes' },
-      { name: 'dl-responsive-table', route: 'responsive-table' },
-      { name: 'dl-multiselect', route: 'multiselect' },
-      { name: 'dl-breadcrumbs', route: 'breadcrumbs' },
-      { name: 'dl-kanban', route: 'kanban' },
-      { name: 'dl-gantt', route: 'gantt' },
-      { name: 'dl-pareto', route: 'pareto' }
+      { name: 'dl-tree-nodes', route: '/menu-anidado' },
+      { name: 'dl-responsive-table', route: '/tabla-web-y-movil' },
+      { name: 'dl-multiselect', route: '/multiselector' },
+      { name: 'dl-breadcrumbs', route: '/breadcrumbs' },
+      { name: 'dl-kanban', route: '/kanban' },
+      { name: 'dl-gantt', route: '/gantt' },
+      { name: 'dl-pareto', route: '/pareto' }
     ],
     currentComponent: null,
     show: false
@@ -66,6 +73,14 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.activator {
+  @apply block;
+
+  @media (min-width: 769px) {
+    @apply hidden;
+  }
+}
+
 .rotating-enter {
   opacity: 0;
 }

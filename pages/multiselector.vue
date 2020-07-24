@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Selector</h1>
+    <h1>Multiselector</h1>
   </div>
 </template>
 
