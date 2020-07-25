@@ -1,10 +1,12 @@
 <template>
   <div>
-    componentes
+    <h1>Multiselector</h1>
   </div>
 </template>
+
 <script>
 export default {
-  name: 'componentes'
+  name: 'selector',
+  layout: 'componentes'
 }
 </script>

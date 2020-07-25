@@ -7,6 +7,13 @@
       </h1>
       <div class="links">
         <a
+          href="/menu-anidado"
+          rel="noopener noreferrer"
+          class="button--green"
+        >
+          Componentes
+        </a>
+        <a
           href="https://nuxtjs.org/"
           target="_blank"
           rel="noopener noreferrer"
@@ -31,7 +38,7 @@
 export default {}
 </script>
 
-<style>
+<style lang="scss">
 /* Sample `apply` at-rules with Tailwind CSS
 .container {
 @apply min-h-screen flex justify-center items-center text-center mx-auto;

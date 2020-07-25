@@ -29,6 +29,7 @@ export default {
   ** Global CSS
   */
   css: [
+    './assets/css/dl-user-profile-layout.scss'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -70,5 +71,6 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+    extend (config, { isDev, isClient }) {}
   }
 }

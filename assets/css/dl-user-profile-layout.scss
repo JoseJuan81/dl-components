@@ -1,0 +1,36 @@
+.profile {
+  @apply h-screen;
+
+  .menu-web {
+    @apply w-full;
+    @apply p-4;
+    @apply rounded;
+    @apply text-gray-600;
+
+    li {
+      @apply my-2 px-2;
+      @apply text-left whitespace-no-wrap;
+      @apply duration-200;
+
+      &:hover {
+        @apply text-indigo-700;
+      }
+
+      &.active {
+        @apply bg-indigo-100;
+        @apply w-full h-full;
+        @apply text-indigo-700;
+        @apply rounded-md;
+        @apply duration-500;
+      }
+    }
+  }
+
+  .dl-aside-container,
+  .wrapper-menu-movil {
+    @apply font-bold text-indigo-700;
+    @apply sticky top-0;
+
+    flex-basis: 22%;
+  }
+}
