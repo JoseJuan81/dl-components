@@ -1,11 +1,23 @@
+.activator {
+  @apply block;
+  @apply pl-4;
+
+  @media (min-width: 769px) {
+    @apply hidden;
+  }
+}
+
 .profile {
   @apply h-screen;
 
-  .menu-web {
+  .menu-web,
+  .menu-movil {
     @apply w-full;
     @apply p-4;
     @apply rounded;
     @apply text-gray-600;
+    @apply font-bold;
+    @apply sticky top-0;
 
     li {
       @apply my-2 px-2;
@@ -26,11 +38,16 @@
     }
   }
 
-  .dl-aside-container,
   .wrapper-menu-movil {
-    @apply font-bold text-indigo-700;
-    @apply sticky top-0;
+    @apply h-screen;
+    @apply border-r border-solid border-gray-200;
 
     flex-basis: 22%;
+
+    .container-menu-movil {
+      .go-back {
+        @apply px-6 pt-4;
+      }
+    }
   }
 }

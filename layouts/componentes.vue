@@ -1,5 +1,5 @@
 <template>
-  <div class="mt-10">
+  <div class="pt-10">
     <button
       class="activator"
       type="button"
@@ -28,18 +28,20 @@
       </template>
       <template v-slot:menu-movil>
         <div class="wrapper-menu-movil" data-cy="menu-movil">
-          <button
-            class="go-back"
-            type="button"
-            @click="show = false"
-          >regresar</button>
-          <ul class="menu-web">
-            <li v-for="c in components" :key="c.name" :class="{ 'active': c.route === $route.path}">
-              <router-link
-                :to="c.route"
-              >{{c.name}}</router-link>
-            </li>
-          </ul>
+          <div class="container-menu-movil">
+            <button
+              class="go-back"
+              type="button"
+              @click="show = false"
+            >Regresar</button>
+            <ul class="menu-movil">
+              <li v-for="c in components" :key="c.name" :class="{ 'active': c.route === $route.path}">
+                <router-link
+                  :to="c.route"
+                >{{c.name}}</router-link>
+              </li>
+            </ul>
+          </div>
         </div>
       </template>
     </UserProfileLayout>
@@ -73,13 +75,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.activator {
-  @apply block;
-
-  @media (min-width: 769px) {
-    @apply hidden;
-  }
-}
 
 .rotating-enter {
   opacity: 0;
