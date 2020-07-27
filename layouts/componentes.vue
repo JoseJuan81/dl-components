@@ -48,7 +48,7 @@
   </div>
 </template>
 <script>
-import UserProfileLayout from '~/my-components/UserProfileLayout'
+import UserProfileLayout from '~/my-components/UserProfileLayout/src/components/user-profile-layout'
 
 function data () {
   return {

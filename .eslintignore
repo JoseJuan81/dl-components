@@ -1,4 +1,4 @@
 **/*.esm.js
 **/*.umd.js
-**/*.ssr.js
 **/*.min.js
+**/ssr.js

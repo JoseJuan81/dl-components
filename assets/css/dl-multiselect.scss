@@ -1,0 +1,126 @@
+.label {
+  @apply font-bold;
+}
+
+.dl-main-container {
+  @apply flex items-center;
+}
+
+.multi-select-container {
+  @apply bg-white;
+  @apply border border-gray-400 border-solid rounded-md;
+  @apply p-2;
+  @apply w-3/4 h-12;
+
+  .dl-select-container {
+    @apply w-full;
+
+    .dl-items-container {
+      .dl-hidden-input {
+        @apply w-0;
+        @apply m-0 p-0;
+        @apply border-0;
+      }
+
+      .dl-item {
+        .tag {
+          @apply relative;
+
+          .selected-item {
+            @apply pl-1 pr-2 mr-1 my-1;
+            @apply border border-indigo-700 border-solid rounded-sm;
+            @apply text-indigo-700 font-bold;
+          }
+
+          .remove-item {
+            @apply bg-white;
+            @apply absolute right-0;
+            @apply cursor-pointer;
+            @apply w-3 h-3;
+            @apply text-center;
+
+            line-height: 0.65rem;
+            top: -5px;
+
+            &:hover {
+              @apply bg-indigo-700;
+              @apply text-white;
+              @apply rounded-full;
+            }
+          }
+        }
+      }
+    }
+
+    .dl-activator-icons-container {
+      .dl-activator-icons {
+        .icon-clear {
+          @apply block text-center leading-4;
+          @apply text-red-600 font-bold text-xl;
+          @apply rounded-full;
+          @apply cursor-pointer;
+          @apply bg-white w-5 h-5;
+          @apply mr-2;
+          @apply duration-500;
+
+          &:hover {
+            @apply bg-red-600;
+            @apply text-white font-bold;
+          }
+        }
+
+        .dl-icon-menu {
+          .menu-activator {
+            @apply w-0 w-0;
+            @apply border-t-8 border-solid border-indigo-700;
+
+            border-right: 5px solid transparent;
+            border-left: 5px solid transparent;
+          }
+        }
+      }
+    }
+  }
+
+  .dl-multi-select-menu {
+    @apply shadow-xl;
+
+    .dl-menu-item-wrapper {
+      .menu-item {
+        @apply border-b border-indigo-100;
+        @apply flex justify-center;
+        @apply py-3 px-5;
+
+        &:last-child {
+          @apply border-b-0;
+        }
+
+        &:hover,
+        &-hover {
+          @apply bg-indigo-100;
+          @apply text-indigo-700 font-bold;
+        }
+      }
+
+      .menu-item-selected,
+      .selected-icon {
+        @apply text-indigo-700 font-bold;
+      }
+
+      .selected-icon {
+        @apply ml-4;
+        @apply absolute left-0;
+      }
+    }
+  }
+}
+
+.vertical-enter-active,
+.vertical-leave-active {
+  transition: all 200ms ease-in;
+}
+
+.vertical-enter,
+.vertical-leave-to {
+  opacity: 0;
+}
