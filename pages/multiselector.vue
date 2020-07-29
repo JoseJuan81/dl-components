@@ -6,7 +6,6 @@
         <Multiselector
           clearable
           select-all
-          item-divider
           multiselect
           prop="id"
           class="multi-select-container"
@@ -20,10 +19,10 @@
               <div class="remove-item" @click.stop="removeIt(tag)">&#215;</div>
             </div>
           </template>
-          <template v-slot:close-icon>
+          <template v-slot:clear-icon>
             <button type="button" class="icon-clear" v-if="optionsSelected.length > 0">&#215;</button>
           </template>
-          <template v-slot:icon>
+          <template v-slot:menu-activator>
             <div class="menu-activator"></div>
           </template>
           <template v-slot:select-all-items="{ isSelected }">
