@@ -56,6 +56,60 @@
           </template>
         </Multiselector>
       </div>
+      <code>
+        <Multiselector
+          clearable
+          select-all
+          multiselect
+          prop="id"
+          class="multi-select-container"
+          transition-name="vertical"
+          :options="options"
+          v-model="optionsSelected"
+        >
+          <template v-slot:tag="{ tag, removeIt }">
+            <div class="tag">
+              <div class="selected-item">{{tag.name}}</div>
+              <div class="remove-item" @click.stop="removeIt(tag)">&#215;</div>
+            </div>
+          </template>
+          <template v-slot:clear-icon>
+            <button type="button" class="icon-clear" v-if="optionsSelected.length > 0">&#215;</button>
+          </template>
+          <template v-slot:menu-activator>
+            <div class="menu-activator"></div>
+          </template>
+          <template v-slot:select-all-items="{ isSelected }">
+            <div
+              :class="[
+                'menu-item',
+                { 'menu-item-selected': isSelected },
+              ]"
+            >
+              <div
+                v-show="isSelected"
+                :class="{ 'selected-icon': isSelected }"
+              >&#10003;</div>
+              <span class="menu-item-name">Todos</span>
+            </div>
+          </template>
+          <template v-slot:menu="{ menuItem, isHovered }">
+            <div
+              :class="[
+                'menu-item',
+                { 'menu-item-hover': isHovered },
+                { 'menu-item-selected': menuItem.isSelected },
+              ]"
+            >
+              <div
+                v-show="menuItem.isSelected"
+                :class="{ 'selected-icon': menuItem.isSelected }"
+              >&#10003;</div>
+              <span class="menu-item-name">{{menuItem.name}}</span>
+            </div>
+          </template>
+        </Multiselector>
+      </code>
     </div>
   </div>
 </template>
