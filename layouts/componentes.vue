@@ -6,21 +6,34 @@
       @click="show = true"
     >Menú</button>
     <UserProfileLayout
-      class="profile container mx-auto px-4 pt-4"
+      class="profile container mx-auto pt-4"
       :show="show"
       :break-point="768"
     >
       <template v-slot:aside>
-        <ul class="menu-web">
-          <li v-for="c in components" :key="c.name" :class="{ 'active': c.route === $route.path}">
-            <router-link
-              :to="c.route"
-            >{{c.name}}</router-link>
-          </li>
-        </ul>
+        <div>
+          <h2 class="menu-section-title">Componentes</h2>
+          <ul class="menu-web">
+            <li v-for="c in components" :key="c.name" :class="{ 'active': c.route === $route.path}">
+              <router-link
+                :to="c.route"
+              >{{c.name}}</router-link>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="menu-section-title">Gráficas</h2>
+          <ul class="menu-web">
+            <li v-for="g in graphips" :key="g.name" :class="{ 'active': g.route === $route.path}">
+              <router-link
+                :to="g.route"
+              >{{g.name}}</router-link>
+            </li>
+          </ul>
+        </div>
       </template>
       <template v-slot:main-content>
-          <div class="h-screen lg:pl-4">
+          <div class="max-w-3xl">
             <transition name="rotating" mode="out-in">
               <Nuxt />
             </transition>
@@ -53,13 +66,18 @@ import UserProfileLayout from '~/my-components/UserProfileLayout/src/components/
 function data () {
   return {
     components: [
-      { name: 'dl-tree-nodes', route: '/menu-anidado' },
-      { name: 'dl-responsive-table', route: '/tabla-web-y-movil' },
-      { name: 'dl-multiselect', route: '/multiselector' },
-      { name: 'dl-breadcrumbs', route: '/breadcrumbs' },
-      { name: 'dl-kanban', route: '/kanban' },
-      { name: 'dl-gantt', route: '/gantt' },
-      { name: 'dl-pareto', route: '/pareto' }
+      { name: 'dl-tree-nodes', route: '/componentes/menu-anidado' },
+      { name: 'dl-responsive-table', route: '/componentes/tabla-web-y-movil' },
+      { name: 'selector', route: '/componentes/selector' },
+      { name: 'dl-breadcrumbs', route: '/componentes/breadcrumbs' },
+      { name: 'dl-kanban', route: '/componentes/kanban' }
+    ],
+    graphips: [
+      { name: 'dl-gantt', route: '/graficas/gantt' },
+      { name: 'dl-pareto', route: '/graficas/pareto' },
+      { name: 'dl-pareto', route: '/graficas/barras' },
+      { name: 'dl-pareto', route: '/graficas/dona' },
+      { name: 'dl-pareto', route: '/graficas/sunburst' }
     ],
     currentComponent: null,
     show: false

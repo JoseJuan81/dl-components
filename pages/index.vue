@@ -7,7 +7,7 @@
       </h1>
       <div class="links">
         <a
-          href="/menu-anidado"
+          href="/componentes/selector"
           rel="noopener noreferrer"
           class="button--green"
         >

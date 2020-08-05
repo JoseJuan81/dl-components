@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme');
 /*
 ** TailwindCSS Configuration File
 **
@@ -6,7 +7,27 @@
 */
 module.exports = {
   theme: {
-    lineHeight: theme => theme('spacing')
+    extend: {
+      lineHeight: theme => theme('spacing'),
+      colors: {
+        nuxt: '#00c58e',
+        primary: defaultTheme.colors.indigo['700'],
+        tailwind: defaultTheme.colors.teal['600'],
+        textPrim: defaultTheme.colors.gray['700'],
+        textSecon: defaultTheme.colors.gray['600'],
+        textTerc: defaultTheme.colors.gray['800'],
+        rollup: '#aa1e1e',
+        vue: '#4fc08d',
+        webpack: '#8dd6f9',
+      },
+      container: {
+        center: true,
+        padding: '1rem',
+      },
+      width: {
+        content: '640px',
+      },
+    },
   },
   variants: {},
   plugins: [],

@@ -10,13 +10,21 @@
 .profile {
   @apply h-screen;
 
+  .dl-aside-container {
+    @apply h-screen;
+
+    .menu-section-title {
+      @apply text-textSecon;
+      @apply uppercase;
+    }
+  }
+
   .menu-web,
   .menu-movil {
     @apply w-full;
-    @apply p-4;
+    @apply px-4 pb-4;
     @apply rounded;
-    @apply text-gray-600;
-    @apply font-bold;
+    @apply text-textSecon font-bold;
     @apply sticky top-0;
 
     li {
@@ -40,6 +48,8 @@
 
   .wrapper-menu-movil {
     @apply h-screen;
+    @apply bg-white;
+    @apply fixed z-10;
     @apply border-r border-solid border-gray-200;
 
     flex-basis: 22%;
