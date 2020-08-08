@@ -1,5 +1,8 @@
 [submodule "my-components/UserProfileLayout"]
 	path = my-components/UserProfileLayout
 	url = https://github.com/JoseJuan81/UserProfileLayout
-[submodule "UserProfileLayout"]
+	branch = dev
+[submodule "my-components/multiselect-dl"]
+	path = my-components/multiselect-dl
+	url = https://github.com/JoseJuan81/multiselect-dl
 	branch = dev
