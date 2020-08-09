@@ -63,7 +63,7 @@
         </div>
       </template>
       <template v-slot:asideRight>
-        <div class="pt-4 sticky top-0 text-sm whitespace-no-wrap grid grid-flow-row text-textSecon">
+        <div class="sticky pt-4 top-0 text-sm whitespace-no-wrap grid grid-flow-row text-textSecon">
           <h2 class="font-bold">En esta página:</h2>
           <a class="pt-2" href="/componentes/selector#seccion-introduccion">- Introducción</a>
           <a class="pt-2" href="/componentes/selector#seccion-componente">- Tipos de selectores</a>
