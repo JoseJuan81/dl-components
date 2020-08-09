@@ -6,21 +6,34 @@
       @click="show = true"
     >Menú</button>
     <UserProfileLayout
-      class="profile container mx-auto px-4 pt-4"
+      class="profile container mx-auto pt-4"
       :show="show"
       :break-point="768"
     >
-      <template v-slot:aside>
-        <ul class="menu-web">
-          <li v-for="c in components" :key="c.name" :class="{ 'active': c.route === $route.path}">
-            <router-link
-              :to="c.route"
-            >{{c.name}}</router-link>
-          </li>
-        </ul>
+      <template v-slot:asideLeft>
+        <div class="wrapper-menu">
+          <div>
+            <h2 class="menu-section-title">Componentes</h2>
+            <MenuLink
+              name="name"
+              route="route"
+              :menu-items="components"
+              :path="$route.path"
+            ></MenuLink>
+          </div>
+          <div>
+            <h2 class="menu-section-title">Gráficas</h2>
+            <MenuLink
+              name="name"
+              route="route"
+              :menu-items="graphips"
+              :path="$route.path"
+            ></MenuLink>
+          </div>
+        </div>
       </template>
       <template v-slot:main-content>
-          <div class="h-screen lg:pl-4">
+          <div class="max-w-2xl mx-auto">
             <transition name="rotating" mode="out-in">
               <Nuxt />
             </transition>
@@ -34,14 +47,28 @@
               type="button"
               @click="show = false"
             >Regresar</button>
-            <ul class="menu-movil">
-              <li v-for="c in components" :key="c.name" :class="{ 'active': c.route === $route.path}">
-                <router-link
-                  :to="c.route"
-                >{{c.name}}</router-link>
-              </li>
-            </ul>
+            <MenuLink
+              name="name"
+              route="route"
+              :menu-items="components"
+              :path="$route.path"
+            ></MenuLink>
+            <MenuLink
+              name="name"
+              route="route"
+              :menu-items="graphips"
+              :path="$route.path"
+            ></MenuLink>
           </div>
+        </div>
+      </template>
+      <template v-slot:asideRight>
+        <div class="sticky pt-4 top-0 text-sm whitespace-no-wrap grid grid-flow-row text-textSecon">
+          <h2 class="font-bold">En esta página:</h2>
+          <a class="pt-2" href="/componentes/selector#seccion-introduccion">- Introducción</a>
+          <a class="pt-2" href="/componentes/selector#seccion-componente">- Tipos de selectores</a>
+          <a class="pt-2" href="/componentes/selector#seccion-propiedades">- Propiedades y slots</a>
+          <a class="pt-2" href="/componentes/selector#seccion-archivos">- Archivos</a>
         </div>
       </template>
     </UserProfileLayout>
@@ -49,17 +76,23 @@
 </template>
 <script>
 import UserProfileLayout from '~/my-components/UserProfileLayout/src/components/user-profile-layout'
+import MenuLink from '~/components/componentes/menu'
 
 function data () {
   return {
     components: [
-      { name: 'dl-tree-nodes', route: '/menu-anidado' },
-      { name: 'dl-responsive-table', route: '/tabla-web-y-movil' },
-      { name: 'dl-multiselect', route: '/multiselector' },
-      { name: 'dl-breadcrumbs', route: '/breadcrumbs' },
-      { name: 'dl-kanban', route: '/kanban' },
-      { name: 'dl-gantt', route: '/gantt' },
-      { name: 'dl-pareto', route: '/pareto' }
+      { name: 'dl-tree-nodes', route: '/componentes/menu-anidado' },
+      { name: 'dl-responsive-table', route: '/componentes/tabla-web-y-movil' },
+      { name: 'selector', route: '/componentes/selector' },
+      { name: 'dl-breadcrumbs', route: '/componentes/breadcrumbs' },
+      { name: 'dl-kanban', route: '/componentes/kanban' }
+    ],
+    graphips: [
+      { name: 'dl-gantt', route: '/graficas/gantt' },
+      { name: 'dl-pareto', route: '/graficas/pareto' },
+      { name: 'dl-barras', route: '/graficas/barras' },
+      { name: 'dl-dona', route: '/graficas/dona' },
+      { name: 'dl-sunburst', route: '/graficas/sunburst' }
     ],
     currentComponent: null,
     show: false
@@ -69,6 +102,7 @@ function data () {
 export default {
   name: 'componentes',
   components: {
+    MenuLink,
     UserProfileLayout
   },
   data

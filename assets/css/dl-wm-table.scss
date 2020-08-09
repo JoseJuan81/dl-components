@@ -1,0 +1,46 @@
+.multiselect-table-props {
+  caption {
+    @apply text-left;
+    @apply italic;
+  }
+
+  thead {
+    @apply text-primary;
+    @apply border-b border-t border-solid border-primary;
+
+    tr {
+      th {
+        @apply py-2 px-2;
+        @apply text-left;
+      }
+    }
+  }
+
+  tbody {
+    tr.row-table-dl {
+      td {
+        @apply py-2 px-2;
+
+        &:first-child {
+          @apply rounded-l-lg;
+        }
+
+        &:last-child {
+          @apply rounded-r-lg;
+        }
+      }
+
+      &:hover {
+        @apply transform scale-105;
+        @apply shadow-xl;
+        @apply duration-200;
+      }
+
+      &:nth-child(even) {
+        td {
+          @apply bg-primaryLight;
+        }
+      }
+    }
+  }
+}

@@ -29,8 +29,10 @@ export default {
   ** Global CSS
   */
   css: [
+    './assets/css/general-components.scss',
     './assets/css/dl-user-profile-layout.scss',
-    './assets/css/dl-multiselect.scss'
+    './assets/css/dl-multiselect.scss',
+    './assets/css/dl-wm-table.scss'
   ],
   /*
   ** Plugins to load before mounting the App

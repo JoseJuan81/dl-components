@@ -1,0 +1,32 @@
+.code-wrapper {
+  @apply bg-gray-800 text-gray-200;
+  @apply block;
+  @apply p-2 my-2;
+  @apply text-xs;
+  @apply rounded;
+  @apply overflow-auto;
+}
+
+.component-variation {
+  &-title {
+    @apply font-bold text-2xl text-textPrim;
+    @apply mb-4;
+    @apply block;
+  }
+
+  &-subtitle {
+    @apply font-bold text-lg text-textPrim;
+    @apply my-3;
+    @apply block;
+  }
+}
+
+.html-tag {
+  &::before {
+    content: '<';
+  }
+}
+
+.label {
+  @apply font-bold;
+}
