@@ -7,20 +7,33 @@
   }
 }
 
-.profile {
-  @apply h-screen;
+.dl-layout-main-container.profile {
+  .dl-container-layout {
+    @apply grid grid-flow-col gap-4;
 
-  .dl-aside-container {
-    @apply h-screen;
+    .dl-aside-container {
+      @apply h-full;
 
-    .menu-section-title {
-      @apply text-textSecon;
-      @apply uppercase;
+      .wrapper-menu {
+        @apply sticky;
+        @apply ml-auto;
+
+        max-width: 15rem;
+        top: 1rem;
+
+        .menu-section-title {
+          @apply text-textSecon;
+          @apply uppercase;
+        }
+      }
     }
   }
 
-  .menu-web,
-  .menu-movil {
+  .dl-menu-movil {
+    @apply bg-white;
+  }
+
+  .menu-items {
     @apply w-full;
     @apply px-4 pb-4;
     @apply rounded;
@@ -37,7 +50,7 @@
       }
 
       &.active {
-        @apply bg-indigo-100;
+        @apply bg-primaryLight;
         @apply w-full h-full;
         @apply text-indigo-700;
         @apply rounded-md;

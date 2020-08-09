@@ -11,7 +11,7 @@
         <img class="m-1" alt="npm" src="https://img.shields.io/npm/dm/multiselect-db">
       </div>
     </section>
-    <section id="section-introduction" class="my-4 text-textSecon">
+    <section id="seccion-introduccion" class="my-4 text-textSecon">
       <h2 class="component-variation-title">Introducción</h2>
       <p class="mb-2">El Multiselector es un componente basado en <a href="https://vuejs.org/" target="_blank" class="text-vue font-bold">Vue</a> con estilos básicos de funcionamiento, es decir, no tiene estilos de apariencia.</p>
       <p class="mb-2">Los estilos de apariencia son agregados por el usuario para que los adapte a la UI del proyecto en el que trabaja.
@@ -40,7 +40,7 @@
         </iframe>
       </div>
     </section>
-    <section id="section-component" class="mt-4 mb-8">
+    <section id="seccion-componente" class="mt-4 mb-8">
       <h2 class="component-variation-title">Tipos de selectores</h2>
       <ul>
         <li class="text-primary my-2">
@@ -118,10 +118,40 @@
         mostrar archivos html y scss con tailwind
       </div>
     </section>
-    <section id="section-props" class="mt-4 mb-8">
+    <section id="seccion-propiedades" class="mt-4 mb-8">
       <h2 class="component-variation-title">Propiedades y slots</h2>
+      <div>
+        <ResponsibleTable
+          class="multiselect-table-props"
+          :break-point="500"
+          :columns="propsColumns"
+          :rows="propsRows"
+        >
+          <template v-slot:caption><h3>Propiedades</h3></template>
+          <template v-slot:row="{ row }">
+            <td class="font-bold">{{row.name}}</td>
+            <td>{{row.type}}</td>
+            <td class="whitespace-no-wrap">{{row.values}}</td>
+            <td>{{row.comments}}</td>
+          </template>
+        </ResponsibleTable>
+      </div>
+      <div class="mt-8">
+        <ResponsibleTable
+          class="multiselect-table-props"
+          :break-point="500"
+          :columns="slotColumns"
+          :rows="slotRows"
+        >
+          <template v-slot:caption><h3>Slots</h3></template>
+          <template v-slot:row="{ row }">
+            <td class="font-bold">{{row.name}}</td>
+            <td>{{row.comments}}</td>
+          </template>
+        </ResponsibleTable>
+      </div>
     </section>
-    <section id="section-install" class="mt-4 mb-8">
+    <section id="seccion-instalacion" class="mt-4 mb-8">
       <h2 class="component-variation-title">Instalación</h2>
       <p>En primer lugar se debe instalar el componente como una dependencia:</p>
       <div>
@@ -131,9 +161,9 @@
       </div>
       <p>Para usar el componente de forma globlal en el proyecto:</p>
       <code class="code-wrapper">
-        import Vue from 'vue';
-        import Selector from 'multiselect-dl';
-        Vue.use(Selector);
+        <span>import Vue from 'vue';</span><br>
+        <span>import Selector from 'multiselect-dl';</span><br>
+        <span>Vue.use(Selector);</span>
       </code>
       <p>Cuando se instala de forma global el componente se usa en el <pre class="inline">template</pre>
         de la siguiente manera
@@ -157,7 +187,7 @@
        se debe instalar de acuerdo a la siguiente sección (Archivos).
       </p>
     </section>
-    <section id="section-files" class="section-files mt-4 mb-8">
+    <section id="seccion-archivos" class="section-files mt-4 mb-8">
       <h2 class="component-variation-title">Archivos</h2>
       <p class="mb-2">
         La instalación del componente genera 4 archivos con las siguienes extensiones:
@@ -245,6 +275,7 @@
 </template>
 <script>
 import Multiselector from '~/my-components/multiselect-dl/src/components/multiselect-dl'
+import ResponsibleTable from '~/my-components/responsivee-table/src/components/responsive-table-dl'
 
 function data () {
   return {
@@ -256,14 +287,41 @@ function data () {
       { id: 5, name: 'Pepito' },
       { id: 6, name: 'Maria Auxiliadora de los Ángeles' }
     ],
-    optionsSelected: []
+    optionsSelected: [],
+    propsColumns: [
+      { id: 1, title: 'Nombre', movil: true },
+      { id: 2, title: 'Tipo', movil: true },
+      { id: 3, title: 'Valores', movil: true },
+      { id: 4, title: 'Observaciones', movil: true }
+    ],
+    propsRows: [
+      { name: 'clearable', type: 'Boolean', values: 'false | true', comments: 'Muestra o no el botón "x" para deseleccionar. Por defecto es "false"' },
+      { name: 'menuMaxHeight', type: 'String', values: 'auto | **px', comments: 'Permite definir la altura máxima del menu. Por defecto es "auto"' },
+      { name: 'minHeight', type: 'String', values: '**rem | **px', comments: 'Permite definir la altura mínima del menu. Por defecto es "0.5rem"' },
+      { name: 'multiselect', type: 'Boolean', values: 'false | true', comments: 'Permite definir si el selector acepta múltiples valores. Por defecto es "false"' },
+      { name: 'selectAll', type: 'Boolean', values: 'false | true', comments: 'Permite mostrar la optión "Todos" en el menú. Por defecto es "false"' },
+      { name: 'options', type: 'Array', values: 'any', comments: 'Son los elementos a seleccionar por el usuario. Requerido' },
+      { name: 'prop', type: 'String', values: 'any', comments: 'Es requerida cuando "options" es un arreglo de objetos. El valor de esta propiedad debe ser único por cada arreglo' },
+      { name: 'transitionName', type: 'String', values: 'any', comments: 'Nombre de la transición (vue transition) a usar para mostrar u oultar el menú' },
+      { name: 'transitionMode', type: 'String', values: 'out-in | in-out', comments: 'Modo de la transición. Por defecto "out-in"(ver documentación de Vue).' }
+    ],
+    slotColumns: [
+      { id: 1, title: 'Nombre', movil: true },
+      { id: 2, title: 'Observaciones', movil: true }
+    ],
+    slotRows: [
+      { name: 'caption', comments: 'Este slot es usado para agregar el "caption" de la tabla' },
+      { name: 'row', comments: 'Este slot representa una fila de la tabla. Dentro se deben definir las celdas o elementos "td"' },
+      { name: 'footer', comments: 'Este slot se puede usar para paginación' }
+    ]
   }
 }
 
 export default {
   name: 'selector',
   components: {
-    Multiselector
+    Multiselector,
+    ResponsibleTable
   },
   data,
   layout: 'componentes'

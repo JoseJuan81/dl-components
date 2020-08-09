@@ -10,30 +10,30 @@
       :show="show"
       :break-point="768"
     >
-      <template v-slot:aside>
-        <div>
-          <h2 class="menu-section-title">Componentes</h2>
-          <ul class="menu-web">
-            <li v-for="c in components" :key="c.name" :class="{ 'active': c.route === $route.path}">
-              <router-link
-                :to="c.route"
-              >{{c.name}}</router-link>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h2 class="menu-section-title">Gráficas</h2>
-          <ul class="menu-web">
-            <li v-for="g in graphips" :key="g.name" :class="{ 'active': g.route === $route.path}">
-              <router-link
-                :to="g.route"
-              >{{g.name}}</router-link>
-            </li>
-          </ul>
+      <template v-slot:asideLeft>
+        <div class="wrapper-menu">
+          <div>
+            <h2 class="menu-section-title">Componentes</h2>
+            <MenuLink
+              name="name"
+              route="route"
+              :menu-items="components"
+              :path="$route.path"
+            ></MenuLink>
+          </div>
+          <div>
+            <h2 class="menu-section-title">Gráficas</h2>
+            <MenuLink
+              name="name"
+              route="route"
+              :menu-items="graphips"
+              :path="$route.path"
+            ></MenuLink>
+          </div>
         </div>
       </template>
       <template v-slot:main-content>
-          <div class="max-w-3xl">
+          <div class="max-w-2xl mx-auto">
             <transition name="rotating" mode="out-in">
               <Nuxt />
             </transition>
@@ -47,14 +47,28 @@
               type="button"
               @click="show = false"
             >Regresar</button>
-            <ul class="menu-movil">
-              <li v-for="c in components" :key="c.name" :class="{ 'active': c.route === $route.path}">
-                <router-link
-                  :to="c.route"
-                >{{c.name}}</router-link>
-              </li>
-            </ul>
+            <MenuLink
+              name="name"
+              route="route"
+              :menu-items="components"
+              :path="$route.path"
+            ></MenuLink>
+            <MenuLink
+              name="name"
+              route="route"
+              :menu-items="graphips"
+              :path="$route.path"
+            ></MenuLink>
           </div>
+        </div>
+      </template>
+      <template v-slot:asideRight>
+        <div class="pt-4 sticky top-0 text-sm whitespace-no-wrap grid grid-flow-row text-textSecon">
+          <h2 class="font-bold">En esta página:</h2>
+          <a class="pt-2" href="/componentes/selector#seccion-introduccion">- Introducción</a>
+          <a class="pt-2" href="/componentes/selector#seccion-componente">- Tipos de selectores</a>
+          <a class="pt-2" href="/componentes/selector#seccion-propiedades">- Propiedades y slots</a>
+          <a class="pt-2" href="/componentes/selector#seccion-archivos">- Archivos</a>
         </div>
       </template>
     </UserProfileLayout>
@@ -62,6 +76,7 @@
 </template>
 <script>
 import UserProfileLayout from '~/my-components/UserProfileLayout/src/components/user-profile-layout'
+import MenuLink from '~/components/componentes/menu'
 
 function data () {
   return {
@@ -75,9 +90,9 @@ function data () {
     graphips: [
       { name: 'dl-gantt', route: '/graficas/gantt' },
       { name: 'dl-pareto', route: '/graficas/pareto' },
-      { name: 'dl-pareto', route: '/graficas/barras' },
-      { name: 'dl-pareto', route: '/graficas/dona' },
-      { name: 'dl-pareto', route: '/graficas/sunburst' }
+      { name: 'dl-barras', route: '/graficas/barras' },
+      { name: 'dl-dona', route: '/graficas/dona' },
+      { name: 'dl-sunburst', route: '/graficas/sunburst' }
     ],
     currentComponent: null,
     show: false
@@ -87,6 +102,7 @@ function data () {
 export default {
   name: 'componentes',
   components: {
+    MenuLink,
     UserProfileLayout
   },
   data

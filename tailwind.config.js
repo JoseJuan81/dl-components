@@ -10,8 +10,10 @@ module.exports = {
     extend: {
       lineHeight: theme => theme('spacing'),
       colors: {
+        grayLight: defaultTheme.colors.gray['200'],
         nuxt: '#00c58e',
         primary: defaultTheme.colors.indigo['700'],
+        primaryLight: defaultTheme.colors.indigo['100'],
         tailwind: defaultTheme.colors.teal['600'],
         textPrim: defaultTheme.colors.gray['700'],
         textSecon: defaultTheme.colors.gray['600'],
